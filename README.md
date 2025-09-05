@@ -25,3 +25,14 @@ open-console = true
 serial-baudrate = 115200
 port = "COM7"
 ```
+
+
+## Generate a new project
+
+You can use `cargo-generate` to create a new empty project.
+
+```
+$ cargo install cargo-generate
+$ cargo install ravedude
+$ cargo generate --git https://github.com/Rahix/avr-hal-template.git
+```
