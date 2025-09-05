@@ -10,7 +10,7 @@ cargo install ravedude
 
 ```
 $ git clone https://github.com/wuhanstudio/arduino-uno-rust-avr-hal
-$ cd arduino-uno-rust-avr-hal/hello-led
+$ cd arduino-uno-rust-avr-hal/hello-arduino-hal
 $ cargo build
 $ cargo run
 ```
