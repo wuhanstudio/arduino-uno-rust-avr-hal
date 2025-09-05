@@ -1,0 +1,13 @@
+[package]
+name = "hello-avr-device"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+avr-device = { version = "0.7.0", features = ["atmega328p", "rt"]}
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"

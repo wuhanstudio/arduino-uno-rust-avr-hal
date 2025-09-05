@@ -1,12 +1,12 @@
 [package]
-name = "hello-led"
+name = "hello-arduino-hal"
 version = "0.1.0"
 authors = ["Han Wu <wuhanstudios@gmail.com>"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
 
 [[bin]]
-name = "hello-led"
+name = "hello-arduino-hal"
 test = false
 bench = false
 
