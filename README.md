@@ -167,6 +167,5 @@ You can use `cargo-generate` to create a new empty project.
 
 ```
 $ cargo install cargo-generate
-$ cargo install ravedude
 $ cargo generate --git https://github.com/Rahix/avr-hal-template.git
 ```
