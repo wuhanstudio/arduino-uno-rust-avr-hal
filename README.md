@@ -83,7 +83,27 @@ fn main() -> ! {
 
 ## Prerequisites
 
-First of all, we need the tool to flash the firmware. You may have heard of [`avrdude`](https://github.com/avrdudes/avrdude), the programmer for AVR microcontrollers.
+First of all, we need a compiler. By default, the Rust toolchain cannot generate AVR bytecode and the AVR support was added recently, so we need a `nightly` toolchain.
+
+```
+$ rustup toolchain install nightly
+```
+
+We also need the `avr-gcc` toolchain. (This may not be needed in the future).
+
+Ubuntu Users:
+
+```
+$ sudo apt-get install gcc-avr
+```
+
+Windows Users:
+
+- AVR-GCC: https://www.microchip.com/en-us/tools-resources/develop/microchip-studio/gcc-compilers
+
+> Don't forget to add the folder to `avr8-gnu-toolchain-win32_x86_64\bin` environment path.
+
+Next, we need the tool to flash the firmware. You may have heard of [`avrdude`](https://github.com/avrdudes/avrdude), the programmer for AVR microcontrollers.
 
 However, it can be tedious to find the firmware built by Rust and flash it to the hardware. To make things easier, `ravedude` allows you to use a single command `cargo run` to build and deploy the firmware to the hardware.
 
@@ -115,10 +135,11 @@ If you can see the LED blinking, we are ready to go.
 
 ## Step 1: Register Level
 
-
+```
+$ cargo install -f atdf2svd
+```
 
 ## Step 2: Chip Level
-
 
 
 ## Step 3: Board Level

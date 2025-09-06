@@ -1,0 +1,20 @@
+# Path to the SVD file we're targeting. Relative to this file.
+# This must be included only in the device YAML file.
+_svd: "atmega328p.svd"
+
+_include:
+  - "common/ac.yaml"
+  - "common/adc.yaml"
+  - "common/spi.yaml"
+  - "common/twi.yaml"
+  - "common/usart.yaml"
+  - "common/wdt.yaml"
+
+  - "timer/atmega328p.yaml"
+
+EXINT:
+  EIMSK:
+    _modify:
+      INT:
+        description: External Interrupt Request Enable
+    _split: [INT]
