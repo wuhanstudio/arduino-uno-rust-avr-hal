@@ -6,9 +6,9 @@ This repo uses Arduino as an example to illustrate what steps are needed to run 
 
 > A Rust package is also called a `crate`.
 
-- **Register Level**: Also known as **PAC (Peripheral Access Crates)**, where we work directly with registers.
-- **Chip Level**: Also known as **HAL (Hardware Abstraction Layer)**, where we can use functions (SDK) to access the hardware.
-- **Board Level**: Also know as **BSP (Board Support Package)**, where we support different boards that have the same chip.
+- **Register Level**: Also known as **PAC** (Peripheral Access Crates), where we work directly with registers.
+- **Chip Level**: Also known as **HAL** (Hardware Abstraction Layer), where we can use functions (SDK) to access the hardware.
+- **Board Level**: Also know as **BSP** (Board Support Package), where we support different boards that have the same chip.
 
 Taking `Arduino Uno` as an example, the following `crates` make it possible to use Rust on AVR microcontrollers.
 
@@ -108,7 +108,7 @@ Next, we need the tool to flash the firmware. You may have heard of [`avrdude`](
 However, it can be tedious to find the firmware built by Rust and flash it to the hardware. To make things easier, `ravedude` allows you to use a single command `cargo run` to build and deploy the firmware to the hardware.
 
 ```
-cargo install ravedude
+$ cargo install ravedude
 ```
 
 Let's tests it out. The command `cargo run` uses `ravedude` to invoke `avrdude` to flash the firmware.
@@ -137,6 +137,8 @@ If you can see the LED blinking, we are ready to go.
 
 ```
 $ cargo install -f atdf2svd
+$ cargo install svd2rust
+$ cargo install form
 ```
 
 ## Step 2: Chip Level
