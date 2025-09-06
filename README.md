@@ -143,6 +143,10 @@ $ cargo install form
 
 ## Step 2: Chip Level
 
+```
+$ rustup component add llvm-tools-preview
+$ cargo size
+```
 
 ## Step 3: Board Level
 

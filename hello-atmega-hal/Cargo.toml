@@ -15,8 +15,15 @@ version = "0.2.3"
 package = "embedded-hal"
 features = ["unproven"]
 
+# Configure the build for minimal size - AVRs have very little program memory
 [profile.dev]
 panic = "abort"
+lto = true
+opt-level = "s"
+debug = true
 
 [profile.release]
 panic = "abort"
+lto = true
+opt-level = "s"
+codegen-units = 1
