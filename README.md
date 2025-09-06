@@ -4,6 +4,21 @@
 
 This repo uses Arduino as an example to illustrate what steps are needed to run Rust on a microcontroller.
 
+## Quick Start
+
+```
+$ sudo apt-get install gcc-avr
+$ sudo apt-get install avrdude
+
+$ rustup toolchain install nightly
+$ cargo install ravedude
+
+$ git clone https://github.com/wuhanstudio/arduino-uno-rust-avr-hal
+$ cd arduino-uno-rust-avr-hal/hello-arduino-hal
+$ cargo build
+$ cargo run
+```
+
 > A Rust package is also called a `crate`.
 
 - **Register Level**: Also known as **PAC** (Peripheral Access Crates), where we work directly with registers.
