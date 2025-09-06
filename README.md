@@ -2,8 +2,6 @@
 
 > How to write a Rust Embedded-HAL for Arduino
 
-This repo uses Arduino as an example to illustrate what steps are needed to run Rust on a microcontroller.
-
 ## Quick Start
 
 ```
@@ -18,6 +16,10 @@ $ cd arduino-uno-rust-avr-hal/hello-arduino-hal
 $ cargo build
 $ cargo run
 ```
+
+## Rust Crates
+
+This repo uses Arduino as an example to illustrate what steps are needed to run Rust on a microcontroller.
 
 > A Rust package is also called a `crate`.
 
