@@ -24,63 +24,6 @@ For this repo, you can find the code at different level in the following folders
 - **Chip Level**: [`hello-atmega-hal`](hello-atmega-hal/)
 - **Board Level**: [`hello-arduino-hal`](hello-arduino-hal/)
 
-Below is an overview of how the code gets more human-readable as we go from the bottom level to the top level.
-
-The register level:
-
-```Rust
-#[avr_device::entry]
-fn main() -> ! {
-    let dp = avr_device::atmega328p::Peripherals::take().unwrap();
-
-    dp.PORTB.ddrb.modify(|_, w| w.pb5().set_bit());
-
-    loop {
-        avr_device::asm::delay_cycles(10_000_000);
-        dp.PORTB.portb.write(|w| w.pb5().set_bit());
-
-        avr_device::asm::delay_cycles(10_000_000);
-        dp.PORTB.portb.write(|w| w.pb5().clear_bit());
-    }
-}
-```
-
-The chip level:
-
-```Rust
-#[avr_device::entry]
-fn main() -> !{
-    let dp = atmega_hal::Peripherals::take().unwrap();
-
-    let pins = atmega_hal::pins!(dp);
-    let mut led = pins.pb5.into_output();
-
-    let mut delay = atmega_hal::delay::Delay::<MHz16>::new();
-
-    loop {
-        led.toggle();
-        delay.delay_ms(1000);
-    }
-}
-```
-
-The board level:
-
-```Rust
-#[arduino_hal::entry]
-fn main() -> ! {
-    let dp = arduino_hal::Peripherals::take().unwrap();
-    let pins = arduino_hal::pins!(dp);
-
-    let mut led = pins.d13.into_output();
-
-    loop {
-        led.toggle();
-        arduino_hal::delay_ms(1000);
-    }
-}
-```
-
 ## Prerequisites
 
 First of all, we need a compiler. By default, the Rust toolchain cannot generate AVR bytecode and the AVR support was added recently, so we need a `nightly` toolchain.
@@ -89,17 +32,19 @@ First of all, we need a compiler. By default, the Rust toolchain cannot generate
 $ rustup toolchain install nightly
 ```
 
-We also need the `avr-gcc` toolchain. (This may not be needed in the future).
+We also need the `avr-gcc` toolchain and `avrdude` programmer.
 
 Ubuntu Users:
 
 ```
 $ sudo apt-get install gcc-avr
+$ sudo apt-get install avrdude
 ```
 
 Windows Users:
 
 - AVR-GCC: https://www.microchip.com/en-us/tools-resources/develop/microchip-studio/gcc-compilers
+- avrdude: https://github.com/avrdudes/avrdude/releases
 
 > Don't forget to add the folder to `avr8-gnu-toolchain-win32_x86_64\bin` environment path.
 
@@ -141,16 +86,63 @@ $ cargo install svd2rust
 $ cargo install form
 ```
 
-## Step 2: Chip Level
-
 ```
 $ rustup component add llvm-tools-preview
 $ cargo size
 ```
 
+```Rust
+#[avr_device::entry]
+fn main() -> ! {
+    let dp = avr_device::atmega328p::Peripherals::take().unwrap();
+
+    dp.PORTB.ddrb.modify(|_, w| w.pb5().set_bit());
+
+    loop {
+        avr_device::asm::delay_cycles(10_000_000);
+        dp.PORTB.portb.write(|w| w.pb5().set_bit());
+
+        avr_device::asm::delay_cycles(10_000_000);
+        dp.PORTB.portb.write(|w| w.pb5().clear_bit());
+    }
+}
+```
+
+## Step 2: Chip Level
+
+```Rust
+#[avr_device::entry]
+fn main() -> !{
+    let dp = atmega_hal::Peripherals::take().unwrap();
+
+    let pins = atmega_hal::pins!(dp);
+    let mut led = pins.pb5.into_output();
+
+    let mut delay = atmega_hal::delay::Delay::<MHz16>::new();
+
+    loop {
+        led.toggle();
+        delay.delay_ms(1000);
+    }
+}
+```
+
 ## Step 3: Board Level
 
+```Rust
+#[arduino_hal::entry]
+fn main() -> ! {
+    let dp = arduino_hal::Peripherals::take().unwrap();
+    let pins = arduino_hal::pins!(dp);
 
+    let mut led = pins.d13.into_output();
+
+    loop {
+        led.toggle();
+        arduino_hal::delay_ms(1000);
+    }
+}
+```
 
 ## Generate a new project
 
