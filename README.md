@@ -99,8 +99,19 @@ If you can see the LED blinking, we are ready to go.
 
 ```
 $ cargo install -f atdf2svd
+$ cargo install svdtools
 $ cargo install svd2rust
 $ cargo install form
+```
+
+```
+$ atdf2svd atmega328p.atdf atmega328p.svd
+
+$ cd patch
+$ svdtools patch atmega328p.yaml
+
+$ svd2rust -i atmega328p.svd.patched
+$ form -i lib.rs -o src
 ```
 
 ```
