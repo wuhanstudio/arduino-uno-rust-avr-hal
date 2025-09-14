@@ -9,6 +9,7 @@ avr-hal-generic = { git = "https://github.com/Rahix/avr-hal/" }
 atmega-hal = { git = "https://github.com/Rahix/avr-hal/", features = ["atmega328p", "rt"] }
 
 embedded-hal = "1.0"
+panic-halt = "1.0.0"
 
 # Configure the build for minimal size - AVRs have very little program memory
 [profile.dev]

@@ -1,17 +1,10 @@
 #![no_std]
 #![no_main]
 
+use panic_halt as _;
+
 use atmega_hal::clock::MHz16;
 use embedded_hal::delay::DelayNs;
-
-#[panic_handler]
-fn panic(_info: &core::panic::PanicInfo) -> ! {
-    // disable interrupts - firmware has panicked so no ISRs should continue running
-    avr_device::interrupt::disable();
-    loop {
-        
-    }
-}
 
 #[avr_device::entry]
 fn main() -> !{
