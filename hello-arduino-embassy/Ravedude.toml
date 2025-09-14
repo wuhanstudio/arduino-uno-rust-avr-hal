@@ -2,7 +2,7 @@
 board = "uno"
 # After flashing, open the serial console at 57600 baud.
 open-console = true
-serial-baudrate = 57600
+serial-baudrate = 115200
 port = "COM4"
 
 # For documentation about this file, check here:

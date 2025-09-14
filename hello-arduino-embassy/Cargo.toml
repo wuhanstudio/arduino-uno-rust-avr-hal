@@ -7,14 +7,13 @@ license = "MIT OR Apache-2.0"
 
 [dependencies]
 panic-halt = "1.0.0"
-ufmt = "0.2.0"
-nb = "1.1.0"
-
-avr-device = { version = "0.7.0", features = ["atmega328p", "rt", "critical-section-impl"]}
 embedded-hal = "1.0"
 
+ufmt = "0.2.0"
 embassy-time = "0.5.0"
 embassy-executor = { version = "0.9.1", features = ["arch-avr", "executor-thread"]}
+
+avr-device = { version = "0.7.0", features = ["atmega328p", "rt", "critical-section-impl"]}
 
 [dependencies.atmega-hal]
 git = "https://github.com/rahix/avr-hal"

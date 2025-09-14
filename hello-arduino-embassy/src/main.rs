@@ -50,6 +50,6 @@ async fn main(spawner: Spawner) {
     spawner.spawn(blinker(led, 300)).unwrap();
 
     // Task 2: Serial output
-    let serial = arduino_hal::default_serial!(dp, pins, 57600);
+    let serial = arduino_hal::default_serial!(dp, pins, 115200);
     spawner.spawn(talk(serial, 1000)).unwrap();
 }
