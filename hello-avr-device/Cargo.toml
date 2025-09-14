@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 avr-device = { version = "0.7.0", features = ["atmega328p", "rt"]}
+panic-halt = "1.0.0"
 
 # Configure the build for minimal size - AVRs have very little program memory
 [profile.dev]

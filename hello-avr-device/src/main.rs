@@ -1,14 +1,7 @@
 #![no_std]
 #![no_main]
 
-#[panic_handler]
-fn panic(_info: &core::panic::PanicInfo) -> ! {
-    // disable interrupts - firmware has panicked so no ISRs should continue running
-    avr_device::interrupt::disable();
-    loop {
-        
-    }
-}
+use panic_halt as _;
 
 // Never returns
 #[avr_device::entry]
