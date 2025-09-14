@@ -15,6 +15,10 @@ $ git clone https://github.com/wuhanstudio/arduino-uno-rust-avr-hal
 $ cd arduino-uno-rust-avr-hal/hello-arduino-hal
 $ cargo build
 $ cargo run
+
+$ rustup component add llvm-tools-preview
+$ cargo size
+$ cargo size -- -A
 ```
 
 ## Rust Crates
