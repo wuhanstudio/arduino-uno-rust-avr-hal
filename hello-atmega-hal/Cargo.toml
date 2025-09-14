@@ -10,11 +10,6 @@ atmega-hal = { git = "https://github.com/Rahix/avr-hal/", features = ["atmega328
 
 embedded-hal = "1.0"
 
-[dependencies.embedded-hal-v0]
-version = "0.2.3"
-package = "embedded-hal"
-features = ["unproven"]
-
 # Configure the build for minimal size - AVRs have very little program memory
 [profile.dev]
 panic = "abort"
